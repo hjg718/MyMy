@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myproject.usermodel.UserDAO"> 
+	<select id="check" resultType="String" >
+		SELECT id FROM prouser WHERE id=#{id}
+	</select>
+	<insert id="join" parameterType="myproject.usermodel.UserVO">
+		INSERT INTO prouser VALUES(PROUSER_SEQ.NEXTVAL,#{id},#{pwd},#{name},#{gender},#{phone},1,'USER') 
+	</insert>
+	<select id="findId" parameterType="myproject.usermodel.UserVO" resultType="String">
+		SELECT id FROM prouser WHERE name = #{name} AND phone = #{phone}
+	</select>
+</mapper>
